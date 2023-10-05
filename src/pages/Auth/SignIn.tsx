@@ -7,22 +7,22 @@ import {
   Grid,
   Box,
   Typography,
-  Divider,
+  Divider
 } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { AuthLayout } from "../../layouts";
 import { setUser, setAuth } from "../../redux/slices";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { authServices } from "../../services";
-import { ButtonCustom } from "../../components";
+import { ButtonCustom, Loading } from "../../components";
 import { keysConfig } from "../../configs";
-import { useAuth } from "../../hooks";
 import queryString from "query-string";
 import {
   DataQueryString,
   ParsedQueryString,
   QueryStringParams,
 } from "../../types";
+import { useAuth, useGoogleLoginConfig } from "../../hooks";
 
 const { RouteKeys } = keysConfig;
 
@@ -32,6 +32,7 @@ const SignIn = () => {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const googleLogin = useGoogleLoginConfig();
   const { accessToken, refreshToken, userId } = useAppSelector(
     (state) => state.auth,
   );
@@ -99,11 +100,10 @@ const SignIn = () => {
       console.log(error);
     }
   };
-
   return (
     <>
       {isLoading ? (
-        "Loading..."
+        <Loading/>
       ) : (
         <AuthLayout>
           <Box
@@ -121,7 +121,11 @@ const SignIn = () => {
               Inicio de Sesión
             </Typography>
             <Box component="form" sx={{ mt: 5 }} onSubmit={handleSubmit}>
-              <Grid container spacing={2}>
+              <Grid
+                container
+                spacing={2}
+                sx={{ justifyContent: "center", textAlign: "center" }}
+              >
                 <Grid item xs={12}>
                   <TextField
                     required
@@ -147,30 +151,29 @@ const SignIn = () => {
                     value={dataForm.password}
                   />
                 </Grid>
-              </Grid>
-              <Grid
-                container
-                sx={{ justifyContent: "center", textAlign: "center", mt: 5 }}
-              >
                 <Grid item>
                   <ButtonCustom>Iniciar Sesión</ButtonCustom>
-                  <Divider>o</Divider>
-                  <ButtonCustom>Iniciar Sesión con Google</ButtonCustom>
-                </Grid>
-              </Grid>
-
-              <Grid
-                container
-                sx={{ justifyContent: "center", textAlign: "center", mt: 5 }}
-              >
-                <Grid item>
-                  <Typography>¿No tienes cuenta?</Typography>
-                  <Link href="signup" variant="body2">
-                    Registrate aquí
-                  </Link>
                 </Grid>
               </Grid>
             </Box>
+
+            <Grid
+              container
+              sx={{ justifyContent: "center", textAlign: "center" }}
+            >
+              <Grid item>
+                <Divider>o</Divider>
+                <ButtonCustom onClick={googleLogin}>
+                  Acceder con Google 🚀
+                </ButtonCustom>
+              </Grid>
+              <Grid item>
+                <Typography>¿No tienes cuenta?</Typography>
+                <Link href={RouteKeys.SIGNUP} variant="body2">
+                  Registrate aquí
+                </Link>
+              </Grid>
+            </Grid>
           </Box>
         </AuthLayout>
       )}

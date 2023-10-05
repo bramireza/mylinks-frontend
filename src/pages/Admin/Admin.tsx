@@ -66,7 +66,7 @@ const Home = () => {
                     <br />
                     Email: {user.email}
                     <br />
-                    Género: {user.gender || "Sin Género"}
+                    Username: {user.username}
                   </Typography>
                 </CardContent>
                 <CardActions>

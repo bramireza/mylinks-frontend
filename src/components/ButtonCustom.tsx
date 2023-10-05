@@ -1,19 +1,27 @@
-import { Button } from "@mui/material";
-
-interface Props {
-  children: JSX.Element | JSX.Element[] | String;
+import { Button, ButtonProps } from "@mui/material";
+import { styled } from '@mui/material/styles';
+interface Props extends ButtonProps {
+  children: JSX.Element | JSX.Element[] | string;
 }
-const ButtonCustom = ({ children }: Props) => {
+const CustomButton = styled(Button)({
+  textTransform: "capitalize",
+  color: "white",
+  marginTop: 20,
+  marginBottom: 20,
+  minWidth: "250px"
+})
+const ButtonCustom = ({ children, ...props }: Props) => {
   return (
     <>
-      <Button
+      <CustomButton
         variant="contained"
         type="submit"
-        sx={{ mt: 2, mb: 2, width: "250px" }}
+        {...props}
       >
         {children}
-      </Button>
+      </CustomButton>
     </>
   );
 };
+
 export default ButtonCustom;

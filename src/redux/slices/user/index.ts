@@ -6,6 +6,7 @@ const { UserKeys } = keysConfig;
 
 const initialState: User = {
   _id: "",
+  username: "",
   fullName: "",
   firstName: "",
   lastName: "",
@@ -13,7 +14,6 @@ const initialState: User = {
   birthDay: null,
   nationality: "",
   gender: "",
-  googleId: "",
   pictureUrl: "",
 };
 

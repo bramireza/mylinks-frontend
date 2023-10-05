@@ -5,6 +5,7 @@ import { setAuth } from "../../redux/slices";
 import { useNavigate } from "react-router-dom";
 import { keysConfig } from "../../configs";
 import { ParsedQueryString } from "../../types";
+import { Loading } from "../../components";
 
 const { RouteKeys } = keysConfig;
 
@@ -26,6 +27,6 @@ const Callback = () => {
     }
   }, []);
 
-  return <>{isLoading ? "Loading..." : <div>Callback</div>}</>;
+  return <>{isLoading ? <Loading/> : <div>Callback</div>}</>;
 };
 export default Callback;

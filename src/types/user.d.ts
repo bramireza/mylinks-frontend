@@ -1,5 +1,6 @@
 export interface User {
   _id: string;
+  username: string;
   fullName: string;
   firstName: string;
   lastName: string;
@@ -7,6 +8,5 @@ export interface User {
   birthDay: Date | null;
   nationality: string;
   gender: string;
-  googleId: string;
   pictureUrl: string;
 }

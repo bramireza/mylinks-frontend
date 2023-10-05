@@ -16,6 +16,7 @@ import { authServices } from "../../services";
 import { ButtonCustom } from "../../components";
 import { handleError } from "../../utils";
 import { keysConfig } from "../../configs";
+import { useGoogleLoginConfig } from "../../hooks";
 
 const { RouteKeys } = keysConfig;
 
@@ -28,6 +29,7 @@ const SignUp = () => {
     password: "",
   });
   const navigate = useNavigate();
+  const googleLogin = useGoogleLoginConfig();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setDataForm((prevState) => {
@@ -64,7 +66,11 @@ const SignUp = () => {
           Registro
         </Typography>
         <Box component="form" sx={{ mt: 5 }} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={2}
+            sx={{ justifyContent: "center", textAlign: "center" }}
+          >
             <Grid item xs={12} sm={6}>
               <TextField
                 required
@@ -135,30 +141,25 @@ const SignUp = () => {
                 value={dataForm.password}
               />
             </Grid>
-          </Grid>
-          <Grid
-            container
-            sx={{ justifyContent: "center", textAlign: "center", mt: 5 }}
-          >
             <Grid item>
               <ButtonCustom>Registrar</ButtonCustom>
-              <Divider>o</Divider>
-              <ButtonCustom>Iniciar Sesión con Google</ButtonCustom>
-            </Grid>
-          </Grid>
-
-          <Grid
-            container
-            sx={{ justifyContent: "center", textAlign: "center" }}
-          >
-            <Grid item>
-              <Typography>¿Ya tienes cuenta?</Typography>
-              <Link href="signin" variant="body2">
-                Inicia Sesión aquí
-              </Link>
             </Grid>
           </Grid>
         </Box>
+        <Grid container sx={{ justifyContent: "center", textAlign: "center" }}>
+          <Grid item>
+            <Divider>o</Divider>
+            <ButtonCustom onClick={googleLogin}>
+              Acceder con Google 🚀
+            </ButtonCustom>
+          </Grid>
+          <Grid item>
+            <Typography>¿Ya tienes cuenta?</Typography>
+            <Link href={RouteKeys.LOGIN} variant="body2">
+              Inicia Sesión aquí
+            </Link>
+          </Grid>
+        </Grid>
       </Box>
     </AuthLayout>
   );
