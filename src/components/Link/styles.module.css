@@ -1,0 +1,16 @@
+.link{
+  text-decoration: none;
+  color: var(--primaryColor);
+  background: var(--buttonColor);
+  border: 1px solid var(--borderColor);
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+.link:hover{
+  background: var(--hoverButtonColor);
+  border: 1px solid var(--hoverBorderColor);
+}

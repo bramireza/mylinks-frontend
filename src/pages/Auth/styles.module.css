@@ -1,0 +1,17 @@
+.containerHeader {
+  margin-bottom: 16px;
+}
+.container,
+.containerBox,
+.containerButton {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.containerBox,
+.containerButton {
+  gap: 16px;
+}
+.container {
+  gap: 8px;
+}

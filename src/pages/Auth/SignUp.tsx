@@ -1,22 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
-import {
-  Avatar,
-  TextField,
-  Link,
-  Grid,
-  Box,
-  Typography,
-  Divider,
-  InputAdornment,
-} from "@mui/material";
-import { AuthLayout } from "../../layouts";
-import { authServices } from "../../services";
-import { ButtonCustom } from "../../components";
-import { handleError } from "../../utils";
-import { keysConfig } from "../../configs";
-import { useGoogleLoginConfig } from "../../hooks";
+import { authServices } from "@/services";
+import { SvgSignup, handleError } from "@/utils";
+import { keysConfig } from "@/configs";
+import { useGoogleLoginConfig } from "@/hooks";
+import { MainLayout } from "@/layouts";
+import { Box, Button, Divider, TextField } from "@/components";
+import styles from "./styles.module.css";
 
 const { RouteKeys } = keysConfig;
 
@@ -50,118 +40,68 @@ const SignUp = () => {
     }
   };
   return (
-    <AuthLayout>
-      <Box
-        sx={{
-          mt: 5,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ bgcolor: "secondary.main", mb: 1 }}>
-          <AppRegistrationIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Registro
-        </Typography>
-        <Box component="form" sx={{ mt: 5 }} onSubmit={handleSubmit}>
-          <Grid
-            container
-            spacing={2}
-            sx={{ justifyContent: "center", textAlign: "center" }}
-          >
-            <Grid item xs={12} sm={6}>
+    <MainLayout>
+      <Box>
+        <div className={styles.containerBox}>
+          <div className={styles.containerHeader}>
+            <SvgSignup />
+            <h1>Registro</h1>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className={styles.container}>
               <TextField
-                required
-                fullWidth
+                type="text"
+                label="Username"
+                name="username"
+                onChange={handleChange}
+                value={dataForm.username}
+              />
+              <TextField
+                type="text"
                 label="Nombres"
-                id="firstName"
                 name="firstName"
-                autoComplete="firstName"
-                autoFocus
                 onChange={handleChange}
                 value={dataForm.firstName}
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
               <TextField
-                required
-                fullWidth
+                type="text"
                 label="Apellidos"
-                id="lastName"
                 name="lastName"
-                autoComplete="lastName"
                 onChange={handleChange}
                 value={dataForm.lastName}
               />
-            </Grid>
-            <Grid item xs={12}>
               <TextField
-                required
-                fullWidth
-                label="Username"
-                id="username"
-                name="username"
-                autoComplete="username"
-                onChange={handleChange}
-                value={dataForm.username}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      {`${window.location.host}/`}
-                    </InputAdornment>
-                  ),
-                }}
-                variant="filled"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
+                type="text"
                 label="Email"
-                id="email"
                 name="email"
-                autoComplete="email"
                 onChange={handleChange}
                 value={dataForm.email}
               />
-            </Grid>
-            <Grid item xs={12}>
               <TextField
                 type="password"
-                required
-                fullWidth
                 label="Contraseña"
-                id="password"
                 name="password"
-                autoComplete="password"
                 onChange={handleChange}
                 value={dataForm.password}
               />
-            </Grid>
-            <Grid item>
-              <ButtonCustom>Registrar</ButtonCustom>
-            </Grid>
-          </Grid>
-        </Box>
-        <Grid container sx={{ justifyContent: "center", textAlign: "center" }}>
-          <Grid item>
-            <Divider>o</Divider>
-            <ButtonCustom onClick={googleLogin}>
-              Acceder con Google 🚀
-            </ButtonCustom>
-          </Grid>
-          <Grid item>
-            <Typography>¿Ya tienes cuenta?</Typography>
-            <Link href={RouteKeys.LOGIN} variant="body2">
-              Inicia Sesión aquí
-            </Link>
-          </Grid>
-        </Grid>
+              <Button type="submit" style={{marginTop: "24px"}}>Registrar</Button>
+            </div>
+          </form>
+          <div className={styles.containerButton}>
+            <Divider>O</Divider>
+            <Button onClick={googleLogin}>Acceder con Google 🚀</Button>
+
+            <span className="b1">
+              ¿Ya tienes cuenta? <br />
+              <a href={RouteKeys.LOGIN}>
+                <span className="b2">Inicia Sesión aquí</span>
+              </a>
+            </span>
+          </div>
+        </div>
       </Box>
-    </AuthLayout>
+    </MainLayout>
   );
 };
 

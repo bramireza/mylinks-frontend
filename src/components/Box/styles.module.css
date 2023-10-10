@@ -1,0 +1,15 @@
+.box{
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  border: 1px solid var(--borderColor);
+  padding: 64px 40px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+}
+.box:hover {
+  border: 1px solid var(--hoverBorderColor);
+}

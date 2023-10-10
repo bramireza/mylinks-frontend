@@ -1,28 +1,20 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Avatar,
-  TextField,
-  Link,
-  Grid,
-  Box,
-  Typography,
-  Divider
-} from "@mui/material";
-import LoginIcon from "@mui/icons-material/Login";
-import { AuthLayout } from "../../layouts";
-import { setUser, setAuth } from "../../redux/slices";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { authServices } from "../../services";
-import { ButtonCustom, Loading } from "../../components";
-import { keysConfig } from "../../configs";
 import queryString from "query-string";
+import { setUser, setAuth } from "@/redux/slices";
+import { authServices } from "@/services";
+import { keysConfig } from "@/configs";
+import { DataQueryString, ParsedQueryString, QueryStringParams } from "@/types";
 import {
-  DataQueryString,
-  ParsedQueryString,
-  QueryStringParams,
-} from "../../types";
-import { useAuth, useGoogleLoginConfig } from "../../hooks";
+  useAuth,
+  useGoogleLoginConfig,
+  useAppDispatch,
+  useAppSelector,
+} from "@/hooks";
+import { Box, Button, Divider, Loading, TextField } from "@/components";
+import { MainLayout } from "@/layouts";
+import { SvgSignin } from "@/utils";
+import styles from "./styles.module.css";
 
 const { RouteKeys } = keysConfig;
 
@@ -103,79 +95,49 @@ const SignIn = () => {
   return (
     <>
       {isLoading ? (
-        <Loading/>
+        <Loading />
       ) : (
-        <AuthLayout>
-          <Box
-            sx={{
-              mt: 5,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Avatar sx={{ bgcolor: "secondary.main", mb: 1 }}>
-              <LoginIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Inicio de Sesión
-            </Typography>
-            <Box component="form" sx={{ mt: 5 }} onSubmit={handleSubmit}>
-              <Grid
-                container
-                spacing={2}
-                sx={{ justifyContent: "center", textAlign: "center" }}
-              >
-                <Grid item xs={12}>
+        <MainLayout>
+          <Box>
+            <div className={styles.containerBox}>
+              <div className={styles.containerHeader}>
+                <SvgSignin />
+                <h1>Inicio de Sesión</h1>
+              </div>
+
+              <form onSubmit={handleSubmit}>
+                <div className={styles.container}>
                   <TextField
-                    required
-                    fullWidth
+                    type="text"
                     label="Email"
-                    id="email"
                     name="email"
-                    autoComplete="email"
                     onChange={handleChange}
                     value={dataForm.email}
                   />
-                </Grid>
-                <Grid item xs={12}>
                   <TextField
                     type="password"
-                    required
-                    fullWidth
                     label="Contraseña"
-                    id="password"
                     name="password"
-                    autoComplete="password"
                     onChange={handleChange}
                     value={dataForm.password}
                   />
-                </Grid>
-                <Grid item>
-                  <ButtonCustom>Iniciar Sesión</ButtonCustom>
-                </Grid>
-              </Grid>
-            </Box>
+                  <Button type="submit" style={{marginTop: "24px"}}>Iniciar Sesión</Button>
+                </div>
+              </form>
+              <div className={styles.containerButton}>
+                <Divider>O</Divider>
+                <Button onClick={googleLogin}>Acceder con Google 🚀</Button>
 
-            <Grid
-              container
-              sx={{ justifyContent: "center", textAlign: "center" }}
-            >
-              <Grid item>
-                <Divider>o</Divider>
-                <ButtonCustom onClick={googleLogin}>
-                  Acceder con Google 🚀
-                </ButtonCustom>
-              </Grid>
-              <Grid item>
-                <Typography>¿No tienes cuenta?</Typography>
-                <Link href={RouteKeys.SIGNUP} variant="body2">
-                  Registrate aquí
-                </Link>
-              </Grid>
-            </Grid>
+                <span className="b1">
+                  ¿No tienes cuenta? <br />
+                  <a href={RouteKeys.SIGNUP}>
+                    <span className="b2">Registrate aquí</span>
+                  </a>
+                </span>
+              </div>
+            </div>
           </Box>
-        </AuthLayout>
+        </MainLayout>
       )}
     </>
   );

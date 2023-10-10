@@ -3,12 +3,12 @@ import { keysConfig } from "../configs";
 import {
   Callback,
   Admin,
-  Home,
   Logout,
   PageNotFound,
   SignIn,
   SignUp,
   UserProfile,
+  Home,
 } from "../pages";
 
 interface IRoute {

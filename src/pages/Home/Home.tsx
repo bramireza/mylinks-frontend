@@ -1,57 +1,22 @@
-import { Box, Card, CardContent, Grid, Divider, Button } from "@mui/material";
 import { keysConfig } from "../../configs";
 import { MainLayout } from "../../layouts";
-
+import { Divider, Footer, Link } from "@/components";
 const { RouteKeys } = keysConfig;
+import styles from "./styles.module.css";
 
 const Home = () => {
   return (
     <MainLayout>
-      <Card sx={{ zIndex: 1, boxShadow: "none", mt: 5, borderRadius: 5 }}>
-        <CardContent>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              padding: 2,
-            }}
-          >
-            <Box
-              sx={{
-                justifyContent: "center",
-                textAlign: "center",
-                display: "contents",
-              }}
-            >
-              <Grid
-                container
-                sx={{ justifyContent: "center", textAlign: "center" }}
-              >
-                <Grid item>
-                  <Button
-                    href={`/${RouteKeys.LOGIN}`}
-                    variant="contained"
-                    sx={{ mt: 5, mb: 2 }}
-                    fullWidth
-                  >
-                    Iniciar Sesión
-                  </Button>
-                  <Divider>o</Divider>
-                  <Button
-                    href={`/${RouteKeys.SIGNUP}`}
-                    variant="contained"
-                    sx={{ mt: 5, mb: 2 }}
-                    fullWidth
-                  >
-                    Registrar
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
-          </Box>
-        </CardContent>
-      </Card>
+      <div className={styles.container}>
+        <div className={styles.containerHeader}>
+          <h1>LINK YOU</h1>
+          <h2>Inicia ahora y comparte tus redes</h2>
+        </div>
+        <Link href={`/${RouteKeys.LOGIN}`}>Iniciar Sesión</Link>
+        <Divider>O</Divider>
+        <Link href={`/${RouteKeys.SIGNUP}`}>Registrar</Link>
+        <Footer/>
+      </div>
     </MainLayout>
   );
 };

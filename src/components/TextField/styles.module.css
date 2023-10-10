@@ -1,0 +1,67 @@
+.textfield {
+  --padding: 8px;
+  --focus-color: var(--hoverBorderColor);
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input,
+.label,
+.labelError {
+  font-size: 12px;
+}
+
+.input {
+  padding: var(--padding);
+  border: 2px solid var(--borderColor);
+  outline: none;
+  border-radius: 6px;
+  width: 100%;
+  height: 40px;
+  background: none;
+}
+
+.label {
+  position: absolute;
+  color: var(--primaryColor);
+  left: var(--padding);
+  padding: 0 8px;
+  border-radius: 4px;
+  transform: translateY(-50%);
+  top: 50%;
+  transition: all 0.2s ease-in;
+}
+
+.input:is(:focus, :valid) {
+  border: 2px solid var(--focus-color);
+}
+
+.input:is(:focus, :valid) + .label {
+  transform: translatey(calc(-1 * var(--padding) - 18px));
+  font-size: 11px;
+  color: var(--focus-color);
+  background-color: var(--backgroundColor);
+}
+
+.labelError {
+  padding: calc(var(--padding) + 2);
+}
+
+.labelError,
+.focusError,
+.input:is(:focus, :valid) + .label.focusError {
+  color: #eb0014;
+}
+
+.error,
+.error:is(:focus, :valid) {
+  border: 2px solid #eb0014;
+}
