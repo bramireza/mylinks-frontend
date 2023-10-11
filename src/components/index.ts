@@ -1,4 +1,4 @@
-export { default as Box } from "./Box";
+export { default as Card } from "./Card";
 export { default as Button } from "./Button";
 export { default as Customizer } from "./Customizer";
 export { default as Divider } from "./Divider";

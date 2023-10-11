@@ -1,10 +1,10 @@
-import { Box } from ".";
+import { Card } from ".";
 import { useAppSelector } from "@/hooks";
 
 const Customizer = () => {
   const user = useAppSelector((state) => state.user);
   return (
-    <Box>{user && 'sdssdsd'}</Box>
+    <Card>{user && 'sdssdsd'}</Card>
   );
 };
 

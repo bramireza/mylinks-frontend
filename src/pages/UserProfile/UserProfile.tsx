@@ -4,7 +4,7 @@ import { MainLayout } from "@/layouts";
 import { linkServices, userServices } from "@/services";
 import { Link, User } from "@/types";
 import { PageNotFound } from "..";
-import { Box, Image, Loading } from "@/components";
+import { Card, Image, Loading } from "@/components";
 
 const UserProfile: React.FC = () => {
   const { username } = useParams();
@@ -51,7 +51,7 @@ const UserProfile: React.FC = () => {
         <>
           {isFoundUser ? (
             <MainLayout>
-              <Box>
+              <Card>
                 <Image alt="Avatar Profile" src={dataUser?.pictureUrl ?? ""} />
                 <h1>{`@${username}`}</h1>
 
@@ -62,7 +62,7 @@ const UserProfile: React.FC = () => {
                     </a>
                   ))}
                 </div>
-              </Box>
+              </Card>
             </MainLayout>
           ) : (
             <PageNotFound />

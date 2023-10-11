@@ -1,4 +1,4 @@
-.box{
+.card{
   width: 100%;
   max-width: 320px;
   border-radius: 20px;
@@ -10,6 +10,6 @@
   align-items: center;
   margin: auto;
 }
-.box:hover {
+.card:hover {
   border: 1px solid var(--hoverBorderColor);
 }

@@ -10,8 +10,9 @@ import {
   useGoogleLoginConfig,
   useAppDispatch,
   useAppSelector,
+  useField,
 } from "@/hooks";
-import { Box, Button, Divider, Loading, TextField } from "@/components";
+import { Card, Button, Divider, Loading, TextField } from "@/components";
 import { MainLayout } from "@/layouts";
 import { SvgSignin } from "@/utils";
 import styles from "./styles.module.css";
@@ -19,12 +20,13 @@ import styles from "./styles.module.css";
 const { RouteKeys } = keysConfig;
 
 const SignIn = () => {
-  const [dataForm, setDataForm] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(true);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const googleLogin = useGoogleLoginConfig();
+  const email = useField({ type: "text" });
+  const password = useField({ type: "password" });
   const { accessToken, refreshToken, userId } = useAppSelector(
     (state) => state.auth,
   );
@@ -52,29 +54,21 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated !== undefined) {
-      if (isAuthenticated) {
-        setIsLoading(true);
-        handleRedirect(qs, { accessToken, refreshToken, userId });
-      } else {
-        setIsLoading(false);
-      }
+    if (isAuthenticated) {
+      setIsLoading(true);
+      handleRedirect(qs, { accessToken, refreshToken, userId });
+    } else {
+      setIsLoading(false);
     }
   }, [isAuthenticated]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setDataForm((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      const dataForm = {
+        email: email.value,
+        password: password.value,
+      };
       const { accessToken, refreshToken, success, user } =
         await authServices.signIn(dataForm);
       if (success) {
@@ -98,8 +92,8 @@ const SignIn = () => {
         <Loading />
       ) : (
         <MainLayout>
-          <Box>
-            <div className={styles.containerBox}>
+          <Card>
+            <div className={styles.containerCard}>
               <div className={styles.containerHeader}>
                 <SvgSignin />
                 <h1>Inicio de Sesión</h1>
@@ -107,20 +101,8 @@ const SignIn = () => {
 
               <form onSubmit={handleSubmit}>
                 <div className={styles.container}>
-                  <TextField
-                    type="text"
-                    label="Email"
-                    name="email"
-                    onChange={handleChange}
-                    value={dataForm.email}
-                  />
-                  <TextField
-                    type="password"
-                    label="Contraseña"
-                    name="password"
-                    onChange={handleChange}
-                    value={dataForm.password}
-                  />
+                  <TextField {...email} label="Email" name="email" />
+                  <TextField {...password} label="Contraseña" name="password" />
                   <Button type="submit" style={{ marginTop: "24px" }} fullWidth>
                     Iniciar Sesión
                   </Button>
@@ -140,7 +122,7 @@ const SignIn = () => {
                 </span>
               </div>
             </div>
-          </Box>
+          </Card>
         </MainLayout>
       )}
     </>

@@ -1,12 +1,12 @@
-import { useAppSelector } from "@/hooks";
+import { useUser } from "@/hooks";
 import { MainLayout } from "@/layouts";
-import { Box, Customizer } from "@/components";
+import { Card, Customizer } from "@/components";
 
-const Home = () => {
-  const user = useAppSelector((state) => state.user);
+const Admin = () => {
+  const { user } = useUser();
   return (
     <MainLayout>
-      <Box>
+      <Card>
         <Customizer />
         <div style={{ display: "flex", justifyContent: "center", width: "40%" }}>
           <iframe
@@ -14,9 +14,9 @@ const Home = () => {
             style={{ borderRadius: "50px", borderWidth: "5px" }}
           />
         </div>
-      </Box>
+      </Card>
     </MainLayout>
   );
 };
 
-export default Home;
+export default Admin;
