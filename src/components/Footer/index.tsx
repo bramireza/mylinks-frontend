@@ -2,7 +2,7 @@ import { SvgGithub, SvgInstagram, SvgLinkedin, SvgTwitter } from "@/utils";
 import styles from './styles.module.css';
 const Footer = () => {
   return (
-    <section>
+    <section className={styles.section}>
       <div className={styles.containerFooter}>
         <a
           href="https://twitter.com/bramirezag"
