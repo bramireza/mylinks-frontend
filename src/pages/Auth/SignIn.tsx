@@ -121,12 +121,16 @@ const SignIn = () => {
                     onChange={handleChange}
                     value={dataForm.password}
                   />
-                  <Button type="submit" style={{marginTop: "24px"}}>Iniciar Sesión</Button>
+                  <Button type="submit" style={{ marginTop: "24px" }} fullWidth>
+                    Iniciar Sesión
+                  </Button>
                 </div>
               </form>
               <div className={styles.containerButton}>
                 <Divider>O</Divider>
-                <Button onClick={googleLogin}>Acceder con Google 🚀</Button>
+                <Button onClick={googleLogin} fullWidth>
+                  Acceder con Google 🚀
+                </Button>
 
                 <span className="b1">
                   ¿No tienes cuenta? <br />

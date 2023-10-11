@@ -1,6 +1,10 @@
 .textfield {
   --padding: 8px;
+  --font-color: var(--primaryColor);
+  --background-color: var(--backgroundColor);
+  --border-color: var(--borderColor);
   --focus-color: var(--hoverBorderColor);
+  --error-color: #eb0014;
   position: relative;
   display: flex;
   align-items: center;
@@ -21,7 +25,7 @@
 
 .input {
   padding: var(--padding);
-  border: 2px solid var(--borderColor);
+  border: 2px solid var(--border-color);
   outline: none;
   border-radius: 6px;
   width: 100%;
@@ -31,7 +35,7 @@
 
 .label {
   position: absolute;
-  color: var(--primaryColor);
+  color: var(--font-color);
   left: var(--padding);
   padding: 0 8px;
   border-radius: 4px;
@@ -40,28 +44,28 @@
   transition: all 0.2s ease-in;
 }
 
-.input:is(:focus, :valid) {
+.input:is(:focus, :hover) {
   border: 2px solid var(--focus-color);
 }
 
 .input:is(:focus, :valid) + .label {
-  transform: translatey(calc(-1 * var(--padding) - 18px));
+  top: 0;
   font-size: 11px;
   color: var(--focus-color);
-  background-color: var(--backgroundColor);
+  background: var(--background-color);
 }
 
 .labelError {
-  padding: calc(var(--padding) + 2);
+  padding: calc(var(--padding) + 2px);
 }
 
 .labelError,
 .focusError,
 .input:is(:focus, :valid) + .label.focusError {
-  color: #eb0014;
+  color: var(--error-color);
 }
 
 .error,
 .error:is(:focus, :valid) {
-  border: 2px solid #eb0014;
+  border: var(--error-color);
 }

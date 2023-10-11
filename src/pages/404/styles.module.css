@@ -1,15 +1,14 @@
-.container{
+.container {
   width: 100%;
   max-width: 320px;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  gap: 16px;
-  padding: 64px 32px;
+  align-items: center;
+  gap: 32px;
 }
-.containerHeader{
-  margin-bottom: 16px;
+.h1{
+  font-size: 32px;
 }

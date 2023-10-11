@@ -13,6 +13,10 @@
   --accentColor3: #a8dadc;
   --accentColor4: #457b9d;
   --accentColor5: #f4a261;
+  --sizeLG: 36px;
+  --sizeMD: 20px;
+  --sizeSM: 16px;
+  --sizeXS: 12px;
 }
 * {
   margin: 0;
@@ -39,24 +43,36 @@
   font-variation-settings: normal;
 }
 h1 {
-  font-size: 20px;
+  font-size: var(--sizeMD);
   line-height: 28px;
   font-weight: 700;
 }
 h2 {
-  font-size: 14px;
+  font-size: var(--sizeSM);
   line-height: 20px;
   font-weight: 500;
 }
 .b1 {
-  font-size: 12px;
+  font-size: var(--sizeXS);
   line-height: 16px;
   font-weight: 500;
 }
 .b2 {
-  font-size: 12px;
+  font-size: var(--sizeXS);
   line-height: 16px;
   font-weight: 400;
+}
+.text-lg {
+  font-size: var(--sizeLG);
+}
+.text-md {
+  font-size: var(--sizeMD);
+}
+.text-sm{
+  font-size: var(--sizeSM);
+}
+.text-xs{
+  font-size: var(--sizeXS);
 }
 
 form,
