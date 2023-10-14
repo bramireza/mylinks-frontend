@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { authServices } from "@/services";
+import { auth } from "@/api";
 import { SvgSignup, handleError } from "@/utils";
-import { keysConfig } from "@/configs";
 import { useField, useGoogleLoginConfig } from "@/hooks";
 import { MainLayout } from "@/layouts";
 import { Card, Button, Divider, TextField } from "@/components";
+import { RouteKeys } from "@/configs";
 import styles from "./styles.module.css";
-
-const { RouteKeys } = keysConfig;
 
 const SignUp = () => {
   const username = useField({ type: "text" });
@@ -28,7 +26,7 @@ const SignUp = () => {
         email: email.value,
         password: password.value
       }
-      const { success } = await authServices.signUp(dataForm);
+      const { success } = await auth.signUp(dataForm);
       if (success) navigate(`/${RouteKeys.LOGIN}`, { replace: true });
     } catch (error) {
       handleError(error);

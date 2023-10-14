@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import queryString from "query-string";
 import { setUser, setAuth } from "@/redux/slices";
-import { authServices } from "@/services";
-import { keysConfig } from "@/configs";
+import { auth } from "@/api";
 import { DataQueryString, ParsedQueryString, QueryStringParams } from "@/types";
 import {
   useAuth,
@@ -15,9 +14,8 @@ import {
 import { Card, Button, Divider, Loading, TextField } from "@/components";
 import { MainLayout } from "@/layouts";
 import { SvgSignin } from "@/utils";
+import { RouteKeys } from "@/configs";
 import styles from "./styles.module.css";
-
-const { RouteKeys } = keysConfig;
 
 const SignIn = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -70,7 +68,7 @@ const SignIn = () => {
         password: password.value,
       };
       const { accessToken, refreshToken, success, user } =
-        await authServices.signIn(dataForm);
+        await auth.signIn(dataForm);
       if (success) {
         dispatch(
           setAuth({

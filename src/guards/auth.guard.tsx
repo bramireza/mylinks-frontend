@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks";
-import { keysConfig } from "../configs";
+import { RouteKeys } from "../configs";
 import { generateQueryStringWithParams } from "../utils";
 import { Loading } from "../components";
 
@@ -11,7 +11,6 @@ interface AuthGuardProps {
 
 const AuthGuard = ({ component: Component }: AuthGuardProps) => {
   const { isAuthenticated, isLoadingVerify } = useAuth();
-  const { RouteKeys } = keysConfig;
 
   if (isLoadingVerify) return <Loading/>;
   if (!isAuthenticated && !isLoadingVerify) {

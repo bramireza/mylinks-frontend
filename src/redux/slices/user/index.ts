@@ -1,8 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { User } from "../../../types";
-import { keysConfig } from "../../../configs";
-
-const { UserKeys } = keysConfig;
+import { User } from "@/types";
+import { UserKeys } from "@/configs";
 
 const initialState: User = {
   _id: "",
@@ -14,7 +12,10 @@ const initialState: User = {
   birthDay: null,
   nationality: "",
   gender: "",
-  pictureUrl: "",
+  avatar: {
+    secure_url: "",
+    public_id: null
+  }
 };
 
 const userSlice = createSlice({

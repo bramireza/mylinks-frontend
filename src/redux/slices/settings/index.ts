@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { SettingKeys } from "@/configs";
 
 export interface SettingsState {
   themeMode: string;
@@ -9,7 +10,7 @@ const initialState: SettingsState = {
 };
 
 const settingsSlice = createSlice({
-  name: "settings",
+  name: SettingKeys.NAME,
   initialState,
   reducers: {
     setThemeMode: (state, action: PayloadAction<string>) => {

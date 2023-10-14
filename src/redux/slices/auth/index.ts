@@ -3,11 +3,9 @@ import {
   getItemLocalStorage,
   removeItemLocalStorage,
   setItemLocalStorage,
-} from "../../../utils";
-import { keysConfig } from "../../../configs";
-import { Auth } from "../../../types";
-
-const { AuthKeys } = keysConfig;
+} from "@/utils";
+import { Auth } from "@/types";
+import { AuthKeys } from "@/configs";
 
 const initialState: Auth = {
   accessToken: getItemLocalStorage(AuthKeys.ACCESS_TOKEN) || "",

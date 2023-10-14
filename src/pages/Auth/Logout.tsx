@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { resetAuth, resetUser } from "../../redux/slices";
 import { useNavigate } from "react-router-dom";
-import { keysConfig } from "../../configs";
-import { authServices } from "../../services";
-import { generateQueryStringWithParams, handleError } from "../../utils";
-import { Loading } from "../../components";
-
-const { RouteKeys } = keysConfig;
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { resetAuth, resetUser } from "@/redux/slices";
+import { generateQueryStringWithParams, handleError } from "@/utils";
+import { Loading } from "@/components";
+import { auth } from "@/api";
+import { RouteKeys } from "@/configs";
 
 const Logout = () => {
   const [isLoading, _setIsLoading] = useState(true);
@@ -18,7 +16,7 @@ const Logout = () => {
   useEffect(() => {
     const queryStringWithParams = generateQueryStringWithParams();
     if (accessToken && refreshToken) {
-      authServices
+      auth
         .logout({ accessToken, refreshToken })
         .then(() => {
           dispatch(resetAuth());

@@ -1,23 +1,23 @@
 import { api, getConfigsWithAccessToken } from "../utils";
 import {
-  ApiResponse,
   DataLogout,
   DataRefreshToken,
   DataRevokeTokens,
   DataSignIn,
   DataSignUp,
+  ApiResponse,
   UserResponse,
   UserTokensResponse,
 } from "../types";
 
 const baseRequest = "/auth";
 
-export const signUp = async (dates: DataSignUp) => {
+const signUp = async (dates: DataSignUp) => {
   const { data } = await api.post<UserResponse>(`${baseRequest}/signup`, dates);
   return data;
 };
 
-export const signIn = async (dates: DataSignIn) => {
+const signIn = async (dates: DataSignIn) => {
   const { data } = await api.post<UserTokensResponse>(
     `${baseRequest}/signin`,
     dates,
@@ -25,7 +25,7 @@ export const signIn = async (dates: DataSignIn) => {
   return data;
 };
 
-export const refreshToken = async (dates: DataRefreshToken) => {
+const refreshToken = async (dates: DataRefreshToken) => {
   const { data } = await api.post<UserTokensResponse>(
     `${baseRequest}/refreshtoken`,
     dates,
@@ -33,7 +33,7 @@ export const refreshToken = async (dates: DataRefreshToken) => {
   return data;
 };
 
-export const revokeTokens = async (dates: DataRevokeTokens) => {
+const revokeTokens = async (dates: DataRevokeTokens) => {
   const { data } = await api.post<ApiResponse>(
     `${baseRequest}/revoketokens`,
     dates,
@@ -42,7 +42,7 @@ export const revokeTokens = async (dates: DataRevokeTokens) => {
   return data;
 };
 
-export const me = async () => {
+const me = async () => {
   const { data } = await api.get<UserResponse>(
     `${baseRequest}/me`,
     getConfigsWithAccessToken(),
@@ -50,7 +50,16 @@ export const me = async () => {
   return data;
 };
 
-export const logout = async (dates: DataLogout) => {
+const logout = async (dates: DataLogout) => {
   const { data } = await api.post<ApiResponse>(`${baseRequest}/logout`, dates);
   return data;
 };
+
+export default {
+  signIn,
+  signUp,
+  me,
+  refreshToken,
+  revokeTokens,
+  logout,
+}

@@ -1,17 +1,16 @@
 import { useGoogleLogin, CodeResponse } from "@react-oauth/google";
-import axios from "axios";
-import {  envConfig, keysConfig } from "../../configs";
-import { useAppDispatch } from "..";
 import { useNavigate } from "react-router-dom";
-import { setAuth, setUser } from "../../redux/slices";
+import axios from "axios";
+import { useAppDispatch } from "@/hooks";
+import { setAuth, setUser } from "@/redux/slices";
+import { API_URL, RouteKeys } from "@/configs";
 
 export const useGoogleLoginConfig = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { RouteKeys } = keysConfig;
   const handleSuccess = async (codeResponse: CodeResponse) => {
     try {
-      const {data} = await axios.post(`${envConfig.API_URL}/auth/google`, {
+      const {data} = await axios.post(`${API_URL}/auth/google`, {
         code: codeResponse.code,
       });
 

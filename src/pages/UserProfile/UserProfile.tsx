@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MainLayout } from "@/layouts";
-import { linkServices, userServices } from "@/services";
 import { Link, User } from "@/types";
-import { PageNotFound } from "..";
+import { PageNotFound } from "@/pages";
 import { Card, Image, Loading } from "@/components";
+import { link, user } from "@/api";
 
 const UserProfile: React.FC = () => {
   const { username } = useParams();
@@ -14,7 +14,7 @@ const UserProfile: React.FC = () => {
   const [dataUser, setDataUser] = useState<User>();
 
   useEffect(() => {
-    userServices
+    user
       .getUserProfile(username!)
       .then(({ success, user }) => {
         if (success) {
@@ -24,10 +24,9 @@ const UserProfile: React.FC = () => {
       .catch((error) => {
         setIsLoading(false);
         setIsFoundUser(false);
-
         console.log(error);
       });
-    linkServices
+    link
       .getLinksActive(username!)
       .then(({ success, links }) => {
         if (success) {
@@ -52,7 +51,7 @@ const UserProfile: React.FC = () => {
           {isFoundUser ? (
             <MainLayout>
               <Card>
-                <Image alt="Avatar Profile" src={dataUser?.pictureUrl ?? ""} />
+                <Image alt="Avatar Profile" src={dataUser?.avatar?.secure_url ?? ""} />
                 <h1>{`@${username}`}</h1>
 
                 <div>

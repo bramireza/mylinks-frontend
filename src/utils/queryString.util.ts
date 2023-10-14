@@ -1,8 +1,6 @@
 import queryString from "query-string";
 import { QueryStringParams } from "../types";
-import { keysConfig } from "../configs";
-
-const { RouteKeys } = keysConfig;
+import { RouteKeys } from "@/configs";
 
 export const generateQueryStringWithParams = () => {
   const currentUrl = window.location.href;

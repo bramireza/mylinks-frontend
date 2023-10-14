@@ -1,7 +1,6 @@
-import { keysConfig } from "../../configs";
-import { MainLayout } from "../../layouts";
+import { MainLayout } from "@/layouts";
 import { Divider, Footer, Link } from "@/components";
-const { RouteKeys } = keysConfig;
+import { RouteKeys } from "@/configs";
 import styles from "./styles.module.css";
 
 const Home = () => {

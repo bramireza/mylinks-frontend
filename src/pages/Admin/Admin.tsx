@@ -1,6 +1,6 @@
-import { useUser } from "@/hooks";
 import { MainLayout } from "@/layouts";
 import { Card, Customizer } from "@/components";
+import { useUser } from "@/hooks";
 
 const Admin = () => {
   const { user } = useUser();

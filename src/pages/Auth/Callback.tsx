@@ -1,13 +1,11 @@
-import queryString from "query-string";
 import { useState, useEffect } from "react";
-import { useAppDispatch } from "../../hooks";
-import { setAuth } from "../../redux/slices";
 import { useNavigate } from "react-router-dom";
-import { keysConfig } from "../../configs";
-import { ParsedQueryString } from "../../types";
-import { Loading } from "../../components";
-
-const { RouteKeys } = keysConfig;
+import queryString from "query-string";
+import { useAppDispatch } from "@/hooks";
+import { setAuth } from "@/redux/slices";
+import { Loading } from "@/components";
+import { ParsedQueryString } from "@/types";
+import { RouteKeys } from "@/configs";
 
 const Callback = () => {
   const [isLoading, _setIsLoading] = useState(true);

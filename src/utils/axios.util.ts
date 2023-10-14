@@ -1,10 +1,9 @@
 import axios, { AxiosError, isAxiosError } from "axios";
-import { keysConfig, envConfig } from "../configs";
 import { getItemLocalStorage } from ".";
+import { API_URL, AuthKeys } from "@/configs";
 
-const { AuthKeys } = keysConfig;
 export const api = axios.create({
-  baseURL: envConfig.API_URL,
+  baseURL: API_URL,
   headers: { "Content-Type": "application/json", Accept: "application/json" },
   withCredentials: true,
 });

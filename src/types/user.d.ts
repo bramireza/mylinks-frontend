@@ -1,3 +1,7 @@
+export interface Avatar{
+  secure_url: string;
+  public_id: string | null;
+}
 export interface User {
   _id: string;
   username: string;
@@ -8,5 +12,5 @@ export interface User {
   birthDay: Date | null;
   nationality: string;
   gender: string;
-  pictureUrl: string;
+  avatar: Avatar;
 }

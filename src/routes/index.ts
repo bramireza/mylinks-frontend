@@ -1,5 +1,4 @@
 import React from "react";
-import { keysConfig } from "../configs";
 import {
   Callback,
   Admin,
@@ -10,13 +9,13 @@ import {
   UserProfile,
   Home,
 } from "../pages";
+import { RouteKeys } from "@/configs";
 
 interface IRoute {
   path: string;
   Component: React.FC;
   isPrivate: boolean;
 }
-const { RouteKeys } = keysConfig;
 export const routes: IRoute[] = [
   {
     path: "/",

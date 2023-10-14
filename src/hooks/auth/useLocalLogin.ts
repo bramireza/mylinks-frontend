@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { AxiosError, isAxiosError } from "axios";
-import { authServices } from "../../services";
-import { setAuth, setUser } from "../../redux/slices";
-import { getItemLocalStorage, handleError } from "../../utils";
-import { keysConfig } from "../../configs";
-import { useAppDispatch } from "..";
+import { setAuth, setUser } from "@/redux/slices";
+import { useAppDispatch } from "@/hooks";
+import { getItemLocalStorage, handleError } from "@/utils";
+import { AuthKeys } from "@/configs";
+import { auth } from "@/api";
 
 export const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isLoadingVerify, setIsLoadingVerify] = useState<boolean>(true);
-  const { AuthKeys } = keysConfig;
   const dispatch = useAppDispatch();
 
   const authenticateUserWithRefreshToken = async (error: AxiosError | any) => {
@@ -17,7 +16,7 @@ export const useAuth = () => {
     if (isAxiosError(error) && error.response?.status === 401) {
       try {
         const { accessToken, refreshToken, user } =
-          await authServices.refreshToken({
+          await auth.refreshToken({
             refreshToken: getItemLocalStorage(AuthKeys.REFRESH_TOKEN),
           });
 
@@ -38,7 +37,7 @@ export const useAuth = () => {
   };
   const authenticateUser = async () => {
     try {
-      const { success, user } = await authServices.me();
+      const { success, user } = await auth.me();
       if (success) {
         setIsAuthenticated(true);
         setIsLoadingVerify(false);

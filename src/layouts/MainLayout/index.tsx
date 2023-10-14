@@ -1,6 +1,6 @@
+import React from "react";
 import { useAppSelector } from "@/hooks";
 import styles from "./styles.module.css";
-import React from "react";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
