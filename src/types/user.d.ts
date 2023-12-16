@@ -9,7 +9,7 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
-  birthDay: Date | null;
+  birthDay?: Date;
   nationality: string;
   gender: string;
   avatar: Avatar;

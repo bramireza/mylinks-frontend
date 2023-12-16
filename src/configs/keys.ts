@@ -18,4 +18,5 @@ export const RouteKeys = {
   LOGOUT: "logout",
   ADMIN: "admin",
   CALLBACK: "callback",
+  ACCOUNT: "account",
 };

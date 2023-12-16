@@ -8,6 +8,7 @@ import {
   SignUp,
   UserProfile,
   Home,
+  Account,
 } from "../pages";
 import { RouteKeys } from "@/configs";
 
@@ -26,6 +27,11 @@ export const routes: IRoute[] = [
     path: "/:username",
     Component: UserProfile,
     isPrivate: false
+  },
+  {
+    path: `/${RouteKeys.ACCOUNT}`,
+    Component: Account,
+    isPrivate: true
   },
   {
     path: `/${RouteKeys.ADMIN}`,

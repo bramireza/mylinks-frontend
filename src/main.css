@@ -18,6 +18,7 @@
   --sizeSM: 16px;
   --sizeXS: 12px;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -42,36 +43,50 @@
   font-feature-settings: normal;
   font-variation-settings: normal;
 }
+
 h1 {
   font-size: var(--sizeMD);
   line-height: 28px;
   font-weight: 700;
 }
+
 h2 {
   font-size: var(--sizeSM);
   line-height: 20px;
   font-weight: 500;
 }
+
+h3 {
+  font-size: var(--sizeSM);
+  line-height: 16px;
+  font-weight: 500;
+}
+
 .b1 {
   font-size: var(--sizeXS);
   line-height: 16px;
   font-weight: 500;
 }
+
 .b2 {
   font-size: var(--sizeXS);
   line-height: 16px;
   font-weight: 400;
 }
+
 .text-lg {
   font-size: var(--sizeLG);
 }
+
 .text-md {
   font-size: var(--sizeMD);
 }
-.text-sm{
+
+.text-sm {
   font-size: var(--sizeSM);
 }
-.text-xs{
+
+.text-xs {
   font-size: var(--sizeXS);
 }
 

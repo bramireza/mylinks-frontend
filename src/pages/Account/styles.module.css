@@ -1,0 +1,103 @@
+.containerLayout{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+.cardProfile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;
+}
+.cardEdit {
+  margin: 0;
+  padding: 40px;
+  max-width: 100%;
+}
+.containerNote{
+  justify-content: center;
+  padding: 16px;
+  background-color: var(--borderColor);
+  border: 1px solid var(--borderColor);
+  border-radius: 8px;
+}
+.containerForm,
+.containerFullWidth,
+.containerButton,
+.containerNote,
+.form {
+  display: flex;
+  width: 100%;
+}
+.containerForm,
+.containerFullWidth,
+.containerNote,
+.form {
+  flex-direction: column;
+}
+.containerForm {
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.containerButton,
+.containerFullWidth{
+  gap: 16px;
+}
+.form {
+  align-items: center;
+  gap: 16px;
+}
+.containerButton {
+  margin-top: 16px;
+  justify-content: center;
+}
+.title,
+.subtitle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.title {
+  flex-direction: column;
+}
+.editButton {
+  appearance: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media screen and (width > 600px) {
+  .containerLayout {
+    padding: 60px;
+  }
+}
+@media screen and (min-width: 850px) {
+  .containerLayout {
+    flex-direction: row;
+  }
+  .containerButton {
+    justify-content: flex-end;
+  }
+  .containerForm {
+    align-items: flex-start;
+  }
+  .containerFullWidth {
+    flex-direction: row;
+  }
+  .containerLayout {
+    padding: 80px;
+  }
+  .subtitle {
+    justify-content: flex-start;
+  }
+}

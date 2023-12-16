@@ -2,10 +2,19 @@ import axios, { AxiosError, isAxiosError } from "axios";
 import { getItemLocalStorage } from ".";
 import { API_URL, AuthKeys } from "@/configs";
 
-export const api = axios.create({
+const api = axios.create({
   baseURL: API_URL,
-  headers: { "Content-Type": "application/json", Accept: "application/json" },
   withCredentials: true,
+});
+
+api.defaults.headers.common['Content-Type'] = 'application/json';
+api.defaults.headers.common['Accept'] = 'application/json';
+
+api.interceptors.request.use((config) => {
+  if (config.data instanceof FormData) {
+    config.headers['Content-Type'] = 'multipart/form-data';
+  }
+  return config;
 });
 
 export const getConfigsWithAccessToken = () => {
@@ -30,3 +39,5 @@ export const handleError = (error: AxiosError | any) => {
     console.log("Error:", error.message);
   }
 };
+
+export default api;
