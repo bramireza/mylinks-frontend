@@ -13,7 +13,7 @@ import {
 } from "@/hooks";
 import { Card, Button, Divider, Loading, TextField } from "@/components";
 import { MainLayout } from "@/layouts";
-import { SvgSignin } from "@/utils";
+import { SvgSignin, handleError } from "@/utils";
 import { RouteKeys } from "@/configs";
 import styles from "./styles.module.css";
 
@@ -23,8 +23,8 @@ const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const googleLogin = useGoogleLoginConfig();
-  const email = useField({ type: "text" });
-  const password = useField({ type: "password" });
+  const email = useField<string>({ type: "text" });
+  const password = useField<string>({ type: "password" });
   const { accessToken, refreshToken, userId } = useAppSelector(
     (state) => state.auth,
   );
@@ -81,7 +81,7 @@ const SignIn = () => {
         handleRedirect(qs, { accessToken, refreshToken, userId: user._id });
       }
     } catch (error) {
-      console.log(error);
+      handleError(error);
     }
   };
   return (

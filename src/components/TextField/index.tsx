@@ -1,14 +1,16 @@
 import React, { FC } from "react";
 import styles from "./styles.module.css";
 import clsx from "clsx";
+import { formatDateToString } from "@/utils";
 
 interface Props {
   type: string;
   label: string;
   name: string;
-  value: string | number;
+  value: string | number | Date;
   isError?: boolean;
   nameError?: string;
+  disabled?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -19,17 +21,22 @@ const Textfield: FC<Props> = ({
   value,
   isError = false,
   nameError,
+  disabled = false,
   onChange,
 }) => {
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, { [styles.disabled]: disabled })}>
       <div className={styles.textfield}>
         <input
           type={type}
           id={`input-${name}`}
           required
           name={name}
-          value={value}
+          value={
+            type === "date"
+              ? formatDateToString(value as Date)
+              : (value as string)
+          }
           onChange={onChange}
           className={clsx(styles.input, { [styles.error]: isError })}
         />

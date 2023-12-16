@@ -1,5 +1,6 @@
-export { default as Card } from "./Card";
+export { default as AvatarField } from "./AvatarField";
 export { default as Button } from "./Button";
+export { default as Card } from "./Card";
 export { default as Customizer } from "./Customizer";
 export { default as Divider } from "./Divider";
 export { default as Footer } from "./Footer";

@@ -8,11 +8,11 @@ import { RouteKeys } from "@/configs";
 import styles from "./styles.module.css";
 
 const SignUp = () => {
-  const username = useField({ type: "text" });
-  const firstName = useField({ type: "text" });
-  const lastName = useField({ type: "text" });
-  const email = useField({ type: "text" });
-  const password = useField({ type: "password" });
+  const username = useField<string>({ type: "text" });
+  const firstName = useField<string>({ type: "text" });
+  const lastName = useField<string>({ type: "text" });
+  const email = useField<string>({ type: "text" });
+  const password = useField<string>({ type: "password" });
   const navigate = useNavigate();
   const googleLogin = useGoogleLoginConfig();
 

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { HtmlHTMLAttributes } from "react";
 import styles from "./styles.module.css";
+import clsx from "clsx";
 
-interface Props {
+interface Props extends HtmlHTMLAttributes<HTMLDivElement>{
   children: JSX.Element | JSX.Element[] | string;
+  className?: string;
 }
-const Card: React.FC<Props> = ({ children, ...props }) => {
+const Card: React.FC<Props> = ({ children, className, ...props }) => {
   return (
-    <div className={styles.card} {...props}>
+    <div className={clsx(styles.card, className)} {...props}>
       {children}
     </div>
   );

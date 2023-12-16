@@ -78,3 +78,73 @@ export const SvgSignup = () => (
     <path d="M19 16v6" />
   </svg>
 );
+export const SvgPhotoEdit = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="currentColor"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M15 8h.01" />
+    <path d="M20.964 12.806a9 9 0 0 0 -8.964 -9.806a9 9 0 0 0 -9 9a9 9 0 0 0 9.397 8.991" />
+    <path d="M4 15l4 -4c.928 -.893 2.072 -.893 3 0l4 4" />
+    <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0" />
+    <path d="M16 19.33h6" />
+    <path d="M19 16.33v6" />
+  </svg>
+);
+
+export const SvgProfileUser = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="currentColor"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+    <path d="M6 21v-2a4 4 0 0 1 4 -4h2.5"></path>
+    <path d="M19.001 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+    <path d="M19.001 15.5v1.5"></path>
+    <path d="M19.001 21v1.5"></path>
+    <path d="M22.032 17.25l-1.299 .75"></path>
+    <path d="M17.27 20l-1.3 .75"></path>
+    <path d="M15.97 17.25l1.3 .75"></path>
+    <path d="M20.733 20l1.3 .75"></path>
+  </svg>
+);
+
+export const SvgPasswordUser = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="currentColor"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 17v4"></path>
+    <path d="M10 20l4 -2"></path>
+    <path d="M10 18l4 2"></path>
+    <path d="M5 17v4"></path>
+    <path d="M3 20l4 -2"></path>
+    <path d="M3 18l4 2"></path>
+    <path d="M19 17v4"></path>
+    <path d="M17 20l4 -2"></path>
+    <path d="M17 18l4 2"></path>
+    <path d="M9 6a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+    <path d="M7 14a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2"></path>
+  </svg>
+);
